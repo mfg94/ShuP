@@ -1,0 +1,19 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Druckerspooler
+Aufgabe A31
+
+Vorbedingung:
+Das aktuelle Arbeitsverzeichnis ist:
+blatt2/a22
+
+Generieranleitung:
+1. Generieren des ausfuehrbaren Programms mit:
+gcc a22.c -o a22
+
+Bedienungsanleitung:
+1. Start des ausfuehrbaren Programms mit genau vier Parametern:
+./a22 <param1> <param2> <param3> <param4>
+<param1> bis <param4> sind vier verschiedene Zeichenketten
+
+
