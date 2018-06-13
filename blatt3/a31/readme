@@ -5,15 +5,14 @@ Aufgabe A31
 
 Vorbedingung:
 Das aktuelle Arbeitsverzeichnis ist:
-blatt2/a22
+blatt3/a31
 
 Generieranleitung:
 1. Generieren des ausfuehrbaren Programms mit:
-gcc a22.c -o a22
+gcc a31.c -o a31
 
 Bedienungsanleitung:
-1. Start des ausfuehrbaren Programms mit genau vier Parametern:
-./a22 <param1> <param2> <param3> <param4>
-<param1> bis <param4> sind vier verschiedene Zeichenkettenx
+1. Start des ausfuehrbaren Programms mit einer Zahl als einzigen Parameter
+./a31 11
 
 

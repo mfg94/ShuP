@@ -94,7 +94,6 @@ int main(int argc, char** argv){
     if((spoolerPid = fork()) == 0){
         printf(MAIN"Spooler started...\n");
         spooler();
-        printf(MAIN"Spooler ended...\n");
         exit(0);
     }
 
@@ -153,6 +152,7 @@ int main(int argc, char** argv){
     //delete shared memory and semaphores
 	shmctl(shmSpoolerQueue, IPC_RMID, NULL);
 	shmctl(shmSpoolerPosition, IPC_RMID, NULL);
+    shmctl(shmPrinterQueue, IPC_RMID, NULL);
 	shmctl(semSpoolerEmpty, IPC_RMID, NULL);
     shmctl(semSpoolerFull, IPC_RMID, NULL);
     shmctl(mutexSpooler, IPC_RMID, NULL);
@@ -270,6 +270,7 @@ void spooler(){
         s.sem_num = printer;
         semop(semPrinterEmpty, &w, 1); //wait(printerEmpty)
         printerQueue[printer] = nextJob;
+        printer = ++printer % PRINTERS;
         semop(semPrinterFull, &s, 1); //signal(printerFull);
 
         printf(SPOO"Spooler sent %d to printer %d\n", nextJob.jobId, printer);
@@ -277,7 +278,6 @@ void spooler(){
         printf(SPOO"content: %d\n", nextJob.content );
         printf(SPOO"pages: %d\n", nextJob.pages );
 
-        printer = ++printer % PRINTERS;
 
 
     }

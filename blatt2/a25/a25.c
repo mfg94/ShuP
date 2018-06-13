@@ -54,7 +54,7 @@ while(1){
 	printf("Midi-Shell:%s$ ",cwd);
 	fgets(input,PATH_MAX,stdin);
 	
-	if(strcmp(input,"schluss")==0)
+	if(strcmp(input,"schluss\n")==0)
 		return 0;
 	
 	if(input[0]=='\n')
