@@ -1,0 +1,19 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 7
+
+a)
+ls -a | wc -w
+
+b)
+ls -a ../*at*
+
+c)
+ls -a ../*.txt
+
+d)
+ls -d ../*/
+
+e)
+

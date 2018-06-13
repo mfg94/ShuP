@@ -1,0 +1,19 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 2: Prozesse unter Linux
+Aufgabe A24
+
+Vorbedingung:
+Das aktuelle Arbeitsverzeichnis ist:
+blatt2/a24
+
+Generieranleitung:
+1. Generieren des ausfuehrbaren Programms mit:
+gcc a24.c -o a24
+gcc helloWorld.c -o helloWorld
+
+Bedienungsanleitung:
+1. Start des ausfuehrbaren Programms mit folgenden Argumenten:
+./a24 <Pfad Unterprogramm> <Argumente für Unterprogramm>
+<Pfad Unterprogramm> = der Pfad zum Programm welches in a24 durch exec() ausgeführt wird
+<Argumente für Unterprogramm> = 0-n Argumente die an das Unterprogramm weitergegeben werden

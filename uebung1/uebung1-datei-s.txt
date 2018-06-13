@@ -1,0 +1,4 @@
+Das ist ein Satz.
+dieter+wismann+syna+uebung
+wort1#wortt2#worrttt3
+spalte1;spalte2;spalte3;spalte4

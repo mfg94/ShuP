@@ -1,0 +1,19 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 5
+
+a)
+cat ../aufgabe1/uebung1-datei.txt | tr '12345' 'ABCDE'
+
+b)
+cat ../aufgabe1/uebung1-datei.txt | tr '+#' ' '
+
+c)
+cat ../aufgabe1/uebung1-datei.txt | tr ';' '-'
+
+d)
+cat ../aufgabe1/uebung1-datei.txt | tr -d ' '
+
+e)
+cat ../aufgabe1/uebung1-datei.txt | tr -s 's' > ../aufgabe1/uebung1-datei-s.txt

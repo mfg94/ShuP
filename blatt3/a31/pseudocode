@@ -1,0 +1,102 @@
+//global variables and semaphores
+sem spoolerFree = 5;
+sem spoolerFull = 0;
+mutex spooler = 1;
+mutex[2] printerMutex = 1;
+Job[5] spoolerQueue; //job must be datatype for storing job information like duration, content, pages, etc.
+Job[2] printerQueue;
+int spoolerPosition;
+
+main(argc, argv){
+    createSharedMemoryAndSemaphores();
+    int countApps = argv[1];
+    fork(spooler()); //create spooler proc
+    fork(printer(0)); //create first printer proc
+    fork(printer(1)); //create second printer proc
+
+    for(i<countApps){
+        sleep(rand[0-4]); //sleep randomly[0-4] before creating next countApps
+        job newJob = {.content = rand(), .duration = rand[2-6]}; //create new printing job for next app with random printing duration
+        fork(app(newJob));
+    }//for
+
+    //create a last empty dummy job as exit criteria for all procs
+    job dummyJob{.content = -1, .duration = -1};
+    fork(app(dummyJob));
+
+    //wait for all procs to finish
+    waitpid(spoolerPid);
+    waitpid(printer0Pid);
+    waitpid(printer1Pid);
+
+    return 0;
+
+}//main
+
+app(Job job){
+
+    wait(spoolerFree);
+    wait(spooler);
+    spoolerQueue[spoolerPosition] = job; //new job for spooler
+    spoolerPosition++;
+    signal(spooler);
+    signal(spoolerFull);
+
+}//app
+
+spooler(){
+
+    int printerPosition = 0;
+    
+    while(1){
+        //take from spoolerQueue
+        wait(spoolerFull);
+        wait(spooler);
+        Job nextJob = spoolerQueue[spoolerPosition];
+
+        if(nextJob.content == -1 ){ //this is the last job, exit criteria for spooler
+            //tell printers about the last dummy job
+            wait(printerMutex[0]);
+            printerQueue[0] = nextJob;
+            signal(printerMutex[0]);
+
+            wait(printerMutex[1]);
+            printerQueue[1] = nextJob;
+            signal(printerMutex[1]);
+
+            return 0; //end spooler
+
+        }//endif
+
+        takeElementFromSpoolerQueueAndMoveAllRemainingElements(); //FIFO
+        spoolerPosition--;
+        signal(spooler);
+        signal(spoolerFree);
+
+        //put into printerqueue
+        wait(printerMutex[printerPosition]);
+        printerQueue[printerPosition] = nextJob;
+        signal(printerMutex[printerPosition]);
+
+        printerPosition = ++printerPosition %2;
+
+    }//while
+
+}//spooler
+
+printer(int index){
+
+    while(1){
+        wait(printerMutex[index]);
+        Job toPrint = printerQueue[index];
+
+        if(toPrint.content == -1){ // this is the last job, exit criteria for printer
+            signal(printerMutex[index]);
+            return 0;
+        }//endif
+
+        print(toPrint);
+        signal(printerMutex[index]);
+
+    }//while
+}

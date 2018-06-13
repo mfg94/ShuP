@@ -1,0 +1,16 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 3
+
+a)
+cut -c 3 -
+
+b)
+cut -d + -f 2 -
+
+c)
+cut -d : -f 2 /etc/passwd
+
+d)
+cut -d : -f 6 /etc/passwd

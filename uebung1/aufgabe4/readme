@@ -1,0 +1,7 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 4
+
+a)
+cut -d '+' -f 2 -s ../uebung1/uebung1-datei.txt

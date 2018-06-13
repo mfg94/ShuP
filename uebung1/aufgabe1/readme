@@ -1,0 +1,16 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 1
+
+a)
+touch dat1, datei-1, datei-, -- "-datei-schwer"
+
+b)
+ln -s /bin/bash ./mybash
+
+c)
+mkdir -p ./sub1/sub2
+
+d)
+touch sub1/{da1txt,da2txt.dat,DAT3,ate4,Ate5}

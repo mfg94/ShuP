@@ -1,0 +1,7 @@
+Autor: Michael Gutmair
+Shell und Prozesse SS 2018
+Blatt 3: Dateisystem, Dateien, Dateiinhalte, Prozesse und Kanäle
+Aufgabe 6
+
+a)
+echo -e "Hallo Welt.\nInhalt ohne Editor geschrieben" >> uebung1-ohne-editor.txt
