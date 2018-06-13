@@ -23,24 +23,25 @@ int main(int argc, char** argv){
 
 	
 	//here comes the child
-	if(!fork()){
+	if((cpid = fork()) == 0 ){
 		if(argc==1){
-			if(execl("./helloWorld","./helloWorld",NULL)==-1){
+			if(execl("./helloWorld","./helloWorld", NULL)==-1){
 				printf("Error -1\n");
-				exit(1);
+				exit(-1);
 			}
 		}
 		else{
 			if(execv(progpath,argv)==-1){
 				printf("Error -1\n");
-				exit(1);
+				exit(-1);
 			}
 		}
 	}
-	else{
-		cpid=wait(&cexit);
-		printf("Kindprozess %d beendet mit Code %d\n",cpid, cexit);	
-		return 0;
-	}
+	
 
+	cpid=wait(&cexit);
+	printf("Kindprozess %d beendet mit Code %d\n",cpid, cexit);	
+	free(progpath);
+	return 0;
+	
 }

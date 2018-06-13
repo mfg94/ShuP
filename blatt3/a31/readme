@@ -13,6 +13,6 @@ gcc a31.c -o a31
 
 Bedienungsanleitung:
 1. Start des ausfuehrbaren Programms mit einer Zahl als einzigen Parameter
-./a31 11
+./a31 <zahl>
 
 

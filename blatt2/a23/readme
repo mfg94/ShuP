@@ -12,7 +12,7 @@ Generieranleitung:
 gcc a23.c -o a23
 
 Bedienungsanleitung:
-1. Start des ausfuehrbaren Programms mit genau vier Parametern:
+1. Start des ausfuehrbaren Programms im Hintergrund
 ./a23 &
 Dreimal (kill -2 <procID> oder kill -15 <procID>) und das Programm beendet sich
 
