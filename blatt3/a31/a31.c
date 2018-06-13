@@ -270,7 +270,6 @@ void spooler(){
         s.sem_num = printer;
         semop(semPrinterEmpty, &w, 1); //wait(printerEmpty)
         printerQueue[printer] = nextJob;
-        printer = ++printer % PRINTERS;
         semop(semPrinterFull, &s, 1); //signal(printerFull);
 
         printf(SPOO"Spooler sent %d to printer %d\n", nextJob.jobId, printer);
@@ -278,6 +277,7 @@ void spooler(){
         printf(SPOO"content: %d\n", nextJob.content );
         printf(SPOO"pages: %d\n", nextJob.pages );
 
+        printer = ++printer % PRINTERS;
 
 
     }
