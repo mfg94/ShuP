@@ -31,7 +31,7 @@ int main(int argc, char** argv){
 			}
 		}
 		else{
-			if(execv(progpath,argv)==-1){
+			if(execv(progpath,argv) == -1){
 				printf("Error -1\n");
 				exit(-1);
 			}
